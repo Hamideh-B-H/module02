@@ -7,7 +7,8 @@ from movie.rating import MovieRating
 # =====================
 # Function to load CSV
 # =====================
-def load_movies(filename):
+def load_movies(filename: str) -> list[Movie]:
+
     """
         Load all movies from a CSV file into a list of Movie objects.
 
@@ -35,7 +36,7 @@ def load_movies(filename):
 # =====================
 # Menu Option 1
 # =====================
-def print_number_of_films(movies):
+def print_number_of_films(movies: list[Movie]) -> None:
     """
         Print the total number of movies in the list.
 
@@ -49,7 +50,7 @@ def print_number_of_films(movies):
 # =====================
 # Menu Option 2
 # =====================
-def print_films_per_genre(movies):
+def print_films_per_genre(movies: list[Movie]) -> None:
     """
         Count and print the number of movies in each genre.
 
@@ -101,7 +102,7 @@ def print_films_per_genre(movies):
 # =====================
 # Menu Option 3
 # =====================
-def print_number_of_persons():
+def print_number_of_persons() -> None:
     """
         Print the total number of Person objects created.
 
@@ -113,7 +114,7 @@ def print_number_of_persons():
 # =====================
 # Menu Option 4
 # =====================
-def print_highest_score(movies):
+def print_highest_score(movies: list[Movie]) -> None:
     """
         Print the movie(s) with the highest relevant score from a list of movies.
         Only movies where `relevant_score()` returns True are considered.
@@ -136,7 +137,7 @@ def print_highest_score(movies):
 # =====================
 # Menu Option 5
 # =====================
-def print_most_active_director(movies):
+def print_most_active_director(movies: list[Movie]) -> None:
     """
         Print the director(s) who have directed the most movies in the given list.
 
@@ -182,7 +183,7 @@ def print_most_active_director(movies):
 # =====================
 # Menu Option 6
 # =====================
-def print_shortest_and_longest(movies):
+def print_shortest_and_longest(movies: list[Movie]) -> None:
     """
         Print the shortest and longest movies from the given list.
 
@@ -208,7 +209,7 @@ def print_shortest_and_longest(movies):
 # =====================
 # Menu Option 7
 # =====================
-def print_scary_horror(movies):
+def print_scary_horror(movies: list[Movie]) -> None:
     """
         Print all horror movies from the list that are considered scary.
 
@@ -227,7 +228,7 @@ def print_scary_horror(movies):
 # =====================
 # Menu Option 8
 # =====================
-def print_score_list(movies):
+def print_score_list(movies: list[Movie]) -> None:
     """
         Print the number of movies for each score from 0 to 100.
 
@@ -254,7 +255,7 @@ def print_score_list(movies):
 # =====================
 # Menu Option 9
 # =====================
-def export_no_relevant_score(movies):
+def export_no_relevant_score(movies: list[Movie]) -> None:
     """
             Export all movies without a relevant score to a CSV file.
 
@@ -281,7 +282,7 @@ def export_no_relevant_score(movies):
 # =====================
 # Main menu
 # =====================
-def show_menu(movies):
+def show_menu(movies: list[Movie]) -> None:
     while True:
         print("\nChoose an option:")
         print("1: Print the total number of films.")

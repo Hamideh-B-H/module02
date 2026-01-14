@@ -50,27 +50,27 @@ class Movie(ABC):
         self.score = score
         self.count = count
 
-    def __repr__(self):
+    def __repr__(self)-> str:
         return f"Movie({self.title})"
 
-    def relevant_score(self):
+    def relevant_score(self) -> bool:
         return (
             self.score is not None
             and self.count is not None
             and self.count >= 100
         )
 
-    def is_classic(self):
+    def is_classic(self) -> bool:
         if self.release_date is None:
             return False
 
         age = datetime.now().year - self.release_date.year
         return age >= 20 and self.relevant_score() and self.score > 80
 
-    def is_short(self):
+    def is_short(self) -> bool:
         return self.length is not None and self.length < 30
 
-    def url(self):
+    def url(self) -> str:
         return f"https://www.rottentomatoes.com/{self.rt_link}"
 
 
@@ -92,17 +92,17 @@ class ScienceFictionFantasy(Movie):
 
 
 class Comedy(Movie):
-    def is_slapstick(self):
+    def is_slapstick(self) -> bool:
         return self.relevant_score() and self.score < 40
 
 
 class Romance(Movie):
-    def is_cosy(self):
+    def is_cosy(self) -> bool:
         return self.length is not None and 70 <= self.length <= 100
 
 
 class Horror(Movie):
-    def is_scary(self):
+    def is_scary(self) -> bool:
         return self.rating > get_rating("PG")
 
 

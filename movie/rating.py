@@ -22,7 +22,7 @@ class MovieRating:
         "NC17": 5
     }
 
-    def __init__(self, code, description):
+    def __init__(self, code: str, description: str) -> None:
         """
                 :param code(str): Rating code (must be unique)
                 :param description(str): Description of the rating
@@ -38,10 +38,10 @@ class MovieRating:
         self.description = description
         MovieRating._ratings[code] = self
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Rating({self.code})"
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         """
                 Compare equality of two ratings by their code.
 
@@ -52,7 +52,7 @@ class MovieRating:
             return False
         return self.code == other.code
 
-    def __lt__(self, other):
+    def __lt__(self, other: object)-> bool:
         """
                Compare two ratings based on predefined order.
 
@@ -75,7 +75,7 @@ MovieRating("R", "Restricted")
 MovieRating("NC17", "Adults only")
 
 
-def get_rating(code):
+def get_rating(code: str)-> MovieRating:
     """
         Retrieve a MovieRating object by its code.
 
