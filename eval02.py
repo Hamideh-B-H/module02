@@ -33,6 +33,8 @@ def load_movies(filename: str) -> list[Movie]:
     return movies
 
 
+
+
 # =====================
 # Menu Option 1
 # =====================
@@ -250,10 +252,35 @@ def print_score_list(movies: list[Movie]) -> None:
         count = score_count.get(score, 0)
         print(f"{score}%: {count}")
 
+        # =====================
+# Menu Option 9
+# =====================
+def print_uneven_month_releases(movies):
+    """
+        Print the titles of movies that were released in an uneven-numbered month.
+
+        :param movies: List of Movie objects to evaluate
+        :return: None
+        """
+    months = [1, 3, 5, 7, 9, 11]  # even months
+
+    uneven_movies = [
+        m for m in movies
+        if m.release_date is not None and m.release_date.month in months
+    ]
+
+    if not uneven_movies:
+        print("No movies released in an even month.")
+        return
+
+    print("Movies released in an even month:")
+    for m in uneven_movies:
+        print(f"- {m.title}")
+
 
 
 # =====================
-# Menu Option 9
+# Menu Option 10
 # =====================
 def export_no_relevant_score(movies: list[Movie]) -> None:
     """
@@ -294,7 +321,8 @@ def show_menu(movies: list[Movie]) -> None:
         print("7: Print all scary horror films.")
         print("8: Print the score list from 0 to 100.")
         print("9: Export films without a relevant score to CSV.")
-        print("10: Stop the program")
+        print("10: Print films released in an even month.")
+        print("11: Stop the program")
 
         choice = input("Enter your choice: ")
 
@@ -316,7 +344,11 @@ def show_menu(movies: list[Movie]) -> None:
             print_score_list(movies)
         elif choice == "9":
             export_no_relevant_score(movies)
+
         elif choice == "10":
+            print_even_month_releases(movies)
+
+        elif choice == "11":
             print("Program stopped.")
             break
         else:
@@ -327,6 +359,9 @@ def show_menu(movies: list[Movie]) -> None:
 # Entry point
 # =====================
 if __name__ == "__main__":
-    movies = load_movies("reviews.csv")
+    movies = load_movies(
+    r"d:\Sync-onedrive\EAP.education\Document - Documents\Hamideh\Syntra-python\module02\reviews.csv")
+
+    #movies = load_movies("reviews.csv")
     show_menu(movies)
 
